@@ -17,7 +17,7 @@ namespace ConsoleApp1
             string surname;
             string fatherName;
             string age;
-            string personalNo;
+            string finCode;
             byte phoneNumber;            
             string jobPosition;
             double salary;          
@@ -43,12 +43,16 @@ namespace ConsoleApp1
                 age = Console.ReadLine();
                 Age(numbers, age);
 
+                Console.Write("Add worker's FIN code: ");
+                finCode = Console.ReadLine();
+                FinCode(upperCaseLetters, lowerLetters, numbers, finCode);
+
                 PhoneNumber();
                 JobPosition();
                 Salary();
             }
         }
-        public static void Name(char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers, string name)
+        public static void Name       (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers, string name)
         {
             int sum = 1;
            if (name.Length < 20 && name.Length > 2)
@@ -121,7 +125,7 @@ namespace ConsoleApp1
                Console.ReadLine();
            }
         }
-        public static void Surname(char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers, string surname)
+        public static void Surname    (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers, string surname)
         {
             int sum = 1;
             if (surname.Length < 35 && surname.Length > 2)
@@ -194,7 +198,7 @@ namespace ConsoleApp1
                 Console.ReadLine();
             }
         }
-        public static void FatherName(char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers, string fatherName)
+        public static void FatherName (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers, string fatherName)
         {
             int sum = 1;
             if (fatherName.Length < 20 && fatherName.Length > 2)
@@ -267,16 +271,16 @@ namespace ConsoleApp1
                 Console.ReadLine();
             }
         }
-        public static void Age(char[] numbers, string age)
+        public static void Age        (char[] numbers, string age)
         {            
             try
             {
                  int convertAge = Convert.ToInt32(age);
                  if(convertAge >= 18 && convertAge <= 65)
                  {    
-                         Console.WriteLine("");
-                         Console.WriteLine("Age added successfully");
-                         Console.WriteLine("");                     
+                     Console.WriteLine("");
+                     Console.WriteLine("Age added successfully");
+                     Console.WriteLine("");                     
                  }
                  else
                  {
@@ -291,6 +295,54 @@ namespace ConsoleApp1
                 Console.WriteLine("");
                 Console.WriteLine("Age not accepted!");
                 Console.WriteLine("Age must contain only numbers");
+                Console.WriteLine("");
+            }
+        }
+        public static void FinCode    (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, string finCode)
+        {
+            int upperCase = 0;
+            int countNumbers = 0;
+            int result = 0;
+            if(finCode.Length == 7)
+            {
+                for(int i = 0; i < finCode.Length; i++)
+                {
+                    for(int j = 0; j < upperCaseLetters.Length; j++)
+                    {
+                        if (finCode[i] == upperCaseLetters[j])
+                        {
+                            upperCase++;
+                        }
+                    }
+                    for(int a = 0; a < numbers.Length; a++)
+                    {
+                        if (finCode[i] == numbers[a])
+                        {
+                            countNumbers++;
+                        }
+                    }
+                }
+                result = upperCase + countNumbers;
+
+                if(result == finCode.Length)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("FIN code accepted");
+                    Console.WriteLine("");
+                }
+                else
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("FIN code not accepted!");
+                    Console.WriteLine("FIN code must contain uppercase letters and numbers");
+                    Console.WriteLine("");
+                }
+            }
+            else
+            {
+                Console.WriteLine("");
+                Console.WriteLine("FIN code not accepted!");
+                Console.WriteLine("FIN code must be 7 numbers");
                 Console.WriteLine("");
             }
         }
