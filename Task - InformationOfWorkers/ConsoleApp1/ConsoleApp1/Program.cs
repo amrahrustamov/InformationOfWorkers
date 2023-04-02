@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace ConsoleApp1
 {
@@ -9,6 +10,8 @@ namespace ConsoleApp1
             char[] upperCaseLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
             char[] lowerLetters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
             char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            string[] jobs = new string[]{ "HR", "Audit", "Engineer"};
+            int arrayLength = jobs.Length;
 
             bool resultUpperCaseLetters = false;
             bool resultLowerLetters = false;
@@ -18,9 +21,9 @@ namespace ConsoleApp1
             string fatherName;
             string age;
             string finCode;
-            byte phoneNumber;            
+            string phoneNumber;            
             string jobPosition;
-            double salary;          
+            string salary;          
 
             Console.Write("Count of employees : ");
             int count = int.Parse(Console.ReadLine());
@@ -47,9 +50,20 @@ namespace ConsoleApp1
                 finCode = Console.ReadLine();
                 FinCode(upperCaseLetters, lowerLetters, numbers, finCode);
 
-                PhoneNumber();
-                JobPosition();
-                Salary();
+                Console.Write("Add worker's phone number: ");
+                phoneNumber = Console.ReadLine();
+                PhoneNumber(upperCaseLetters, lowerLetters, numbers, phoneNumber);
+
+                Console.WriteLine(" HR");
+                Console.WriteLine(" Audit");
+                Console.WriteLine(" Engineer");
+                Console.Write("Add worker's job position: ");
+                jobPosition = Console.ReadLine();
+                JobPosition(upperCaseLetters, lowerLetters, jobs, arrayLength, jobPosition);
+                
+                Console.Write("Add worker's salary: ");
+                salary = Console.ReadLine();
+                Salary(numbers, salary);
             }
         }
         public static void Name       (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers, string name)
@@ -327,37 +341,132 @@ namespace ConsoleApp1
                 if(result == finCode.Length)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("FIN code accepted");
+                    Console.WriteLine("*****FIN code accepted*****");
                     Console.WriteLine("");
                 }
                 else
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("FIN code not accepted!");
-                    Console.WriteLine("FIN code must contain uppercase letters and numbers");
+                    Console.WriteLine("*****FIN code not accepted!*****");
+                    Console.WriteLine("*****FIN code must contain uppercase letters and numbers*****");
                     Console.WriteLine("");
                 }
             }
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("FIN code not accepted!");
-                Console.WriteLine("FIN code must be 7 numbers");
+                Console.WriteLine("*****FIN code not accepted*****!");
+                Console.WriteLine("*****FIN code must be 7 numbers*****");
                 Console.WriteLine("");
             }
         }
-        public static void PhoneNumber()
+        public static void PhoneNumber(char[] upperCaseLetters, char[] lowerLetters, char[] numbers, string phoneNumber)
         {
-            Console.Write("Add worker's phone number: ");
+            string startChar = "+994";
+            int i = 0;
+            bool succes= false;
 
+            if (phoneNumber.Length == 13)
+            {
+                int result = 0;
+                for (i = 0; i < startChar.Length; i++)
+                {
+                    if (phoneNumber[i] != startChar[i] && i < startChar.Length)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Phone number not accepted!");
+                        Console.WriteLine("Phone number must start with +994");
+                        Console.WriteLine("");
+                        succes = true;
+                        break;
+                    }
+                    result++;
+                }
+                int sum = i;
+                
+                for ( ; sum < phoneNumber.Length; sum++)
+                {                   
+                    for(int j = 0; j < numbers.Length; j++)
+                    {
+                        if (phoneNumber[sum] == numbers[j])
+                        {
+                            result++;
+                        }
+                    }
+                }
+                if(result == phoneNumber.Length && succes != true)
+                {
+                   Console.WriteLine("");
+                   Console.WriteLine("Phone number accepted");
+                   Console.WriteLine("");   
+                }
+                if (result != phoneNumber.Length && succes != true)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Phone number not accepted!");
+                    Console.WriteLine("phone number must consist of numbers");
+                    Console.WriteLine("");
+                }
+            }
+            else
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Phone number not accepted!");
+                Console.WriteLine("Phone number must contain 13 digits");
+                Console.WriteLine("");
+            }
         }
-        public static void JobPosition()
+        public static void JobPosition(char[] upperCaseLetters, char[] lowerLetters, string[] jobs, int arrayLength, string jobPosition)
         {
-            Console.Write("Add worker's job position: ");
+            bool b = false;
+            for (int i = 0; i < arrayLength; i++)
+            {
+                if(jobPosition == jobs[i])
+                {
+                    b = true;
+                    break;
+                }
+            }
+            if(b == true)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Added to the system");
+                Console.WriteLine("");
+            }
+            else
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Job not accepted!");
+                Console.WriteLine("Please enter one of the jobs in the list");
+                Console.WriteLine("");
+            }
         }
-        public static void Salary()
+        public static void Salary(char[] numbers, string salary)
         {
-            Console.Write("Add worker's salary: ");
+            try
+            {
+                int convertSalary = Convert.ToInt32(salary);
+                if(convertSalary >= 1500 && convertSalary <= 5000)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Salary added successfully");
+                    Console.WriteLine("");
+                }
+                else
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("It was not accepted!");
+                    Console.WriteLine("The amount you enter should be between 1500 and 5000");
+                    Console.WriteLine("");
+                }
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("It was not accepted!");
+                Console.WriteLine("Use numbers only");
+                Console.WriteLine("");
+            }
         }
     }
 }
