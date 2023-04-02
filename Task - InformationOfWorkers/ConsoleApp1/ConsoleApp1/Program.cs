@@ -20,7 +20,6 @@ namespace ConsoleApp1
 
             Console.Write("Count of employees : ");
             int count = int.Parse(Console.ReadLine());
-
             for(int i = 0; i < count; i++)
             {                 
                 Name(upperCaseLetters, lowerLetters, numbers, resultUpperCaseLetters, resultLowerLetters, resultNumbers);                              
@@ -31,8 +30,12 @@ namespace ConsoleApp1
                 PhoneNumber(upperCaseLetters, lowerLetters, numbers);
                 JobPosition(upperCaseLetters, lowerLetters, jobs, arrayLength);             
                 Salary(numbers);
+
+                Console.WriteLine("######################");
+                Console.WriteLine("Completed successfully");
+                Console.WriteLine("######################");
+                Console.ReadLine();
             }
-            Console.ReadLine();
         }
         public static void Name       (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers)
         {
@@ -61,8 +64,8 @@ namespace ConsoleApp1
                            if (resultNumbers == true)
                            {
                                Console.WriteLine("");
-                               Console.WriteLine("Name not accepted!" + " " + "Please try again");
-                               Console.WriteLine("The name must contain only letters");
+                               Console.WriteLine("*****Name not accepted!" + " " + "Please try again*****");
+                               Console.WriteLine("*****The name must contain only letters*****");
                                Console.WriteLine("");
                             break;
                            }
@@ -94,23 +97,23 @@ namespace ConsoleApp1
                        if (resultLowerLetters == true && resultUpperCaseLetters == true)
                        {
                            Console.WriteLine("");
-                           Console.WriteLine("Name added successfully");
+                           Console.WriteLine("*****Name added successfully*****");
                            Console.WriteLine("");
                         son++;
                        }
                        else
                        {
                            Console.WriteLine("");
-                           Console.WriteLine("Name not accepted!" + " " + "Please try again");
-                           Console.WriteLine("The first letter should be uppercase and the following letters should be lowercase");
+                           Console.WriteLine("*****Name not accepted!" + " " + "Please try again*****");
+                           Console.WriteLine("*****The first letter should be uppercase and the following letters should be lowercase*****");
                            Console.WriteLine();
                        }
                   }
                   else
                   {
                       Console.WriteLine("");
-                      Console.WriteLine("Name not accepted!" + " " + "Please try again");
-                      Console.WriteLine("Letters must be longer than 2 and less than 20");
+                      Console.WriteLine("*****Name not accepted!" + " " + "Please try again*****");
+                      Console.WriteLine("*****Letters must be longer than 2 and less than 20*****");
                       Console.WriteLine("");
                 }
             }
@@ -142,8 +145,8 @@ namespace ConsoleApp1
                     if (resultNumbers == true)
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("Surname not accepted!" + " " + "Please try again");
-                        Console.WriteLine("The Surname must contain only letters");
+                        Console.WriteLine("*****Surname not accepted!" + " " + "Please try again*****");
+                        Console.WriteLine("*****The Surname must contain only letters*****");
                         Console.WriteLine("");
                         break;
                     }
@@ -175,23 +178,23 @@ namespace ConsoleApp1
                 if (resultLowerLetters == true && resultUpperCaseLetters == true)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("Surname added successfully");
+                    Console.WriteLine("*****Surname added successfully*****");
                     Console.WriteLine("");
                         son++;
                 }
                 else
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("Surname not accepted!" + " " + "Please try again");
-                    Console.WriteLine("The first letter should be uppercase and the following letters should be lowercase");
+                    Console.WriteLine("*****Surname not accepted!" + " " + "Please try again*****");
+                    Console.WriteLine("*****The first letter should be uppercase and the following letters should be lowercase*****");
                     Console.WriteLine("");
                 }
             }
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("Surname not accepted!" + " " + "Please try again");
-                Console.WriteLine("Letters must be longer than 2 and less than 35");
+                Console.WriteLine("*****Surname not accepted!" + " " + "Please try again*****");
+                Console.WriteLine("*****Letters must be longer than 2 and less than 35*****");
                 Console.WriteLine("");
             }
            }
@@ -222,8 +225,8 @@ namespace ConsoleApp1
                     if (resultNumbers == true)
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("Father name not accepted!" + " " + "Please try again");
-                        Console.WriteLine("The name must contain only letters");
+                        Console.WriteLine("*****Father name not accepted!" + " " + "Please try again*****");
+                        Console.WriteLine("*****The name must contain only letters*****");
                         Console.WriteLine("");
                         break;
                     }
@@ -255,23 +258,23 @@ namespace ConsoleApp1
                 if (resultLowerLetters == true && resultUpperCaseLetters == true)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("Name added successfully");
+                    Console.WriteLine("*****Name added successfully*****");
                     Console.WriteLine("");
                         son++;
                 }
                 else
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("Father name not accepted!" + " " + "Please try again");
-                    Console.WriteLine("The first letter should be uppercase and the following letters should be lowercase");
+                    Console.WriteLine("*****Father name not accepted!" + " " + "Please try again*****");
+                    Console.WriteLine("*****The first letter should be uppercase and the following letters should be lowercase*****");
                     Console.WriteLine("");
                 }
             }
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("Father name not accepted!" + " " + "Please try again");
-                Console.WriteLine("Letters must be longer than 2 and less than 20");
+                Console.WriteLine("*****Father name not accepted!" + " " + "Please try again*****");
+                Console.WriteLine("*****Letters must be longer than 2 and less than 20*****");
                 Console.WriteLine("");
             }
            }
@@ -289,23 +292,23 @@ namespace ConsoleApp1
                  if(convertAge >= 18 && convertAge <= 65)
                  {    
                      Console.WriteLine("");
-                     Console.WriteLine("Age added successfully");
+                     Console.WriteLine("*****Age added successfully*****");
                      Console.WriteLine("");
                         son++;
                  }
                  else
                  {
                      Console.WriteLine("");
-                     Console.WriteLine("Age not accepted!" + " " + "Please try again");
-                     Console.WriteLine("Age should be between 18-65 years");
+                     Console.WriteLine("*****Age not accepted!" + " " + "Please try again*****");
+                     Console.WriteLine("*****Age should be between 18-65 years*****");
                      Console.WriteLine("");
                  }
             }
             catch (Exception)
             {
                 Console.WriteLine("");
-                Console.WriteLine("Age not accepted!" + " " + "Please try again");
-                Console.WriteLine("Age must contain only numbers");
+                Console.WriteLine("*****Age not accepted!" + " " + "Please try again*****");
+                Console.WriteLine("*****Age must contain only numbers*****");
                 Console.WriteLine("");
             }
            }
@@ -344,14 +347,14 @@ namespace ConsoleApp1
                 if(result == finCode.Length)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("FIN code accepted");
+                    Console.WriteLine("*****FIN code accepted*****");
                     Console.WriteLine("");
                         son++;
                 }
                 else
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("FIN code not accepted!" + " " + "Please try again");
+                    Console.WriteLine("*****FIN code not accepted!" + " " + "Please try again*****");
                     Console.WriteLine("*****FIN code must contain uppercase letters and numbers*****");
                     Console.WriteLine("");
                 }
@@ -359,8 +362,8 @@ namespace ConsoleApp1
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("FIN code not accepted!" + " " + "Please try again");
-                Console.WriteLine("FIN code must be 7 numbers");
+                Console.WriteLine("*****FIN code not accepted!" + " " + "Please try again*****");
+                Console.WriteLine("*****FIN code must be 7 numbers*****");
                 Console.WriteLine("");
             }
            }
@@ -384,8 +387,8 @@ namespace ConsoleApp1
                     if (phoneNumber[i] != startChar[i] && i < startChar.Length)
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("Phone number not accepted!" + " " + "Please try again");
-                        Console.WriteLine("Phone number must start with +994");
+                        Console.WriteLine("*****Phone number not accepted!" + " " + "Please try again*****");
+                        Console.WriteLine("*****Phone number must start with +994*****");
                         Console.WriteLine("");
                         succes = true;
                         break;
@@ -407,23 +410,23 @@ namespace ConsoleApp1
                 if(result == phoneNumber.Length && succes != true)
                 {
                    Console.WriteLine("");
-                   Console.WriteLine("Phone number accepted");
+                   Console.WriteLine("*****Phone number accepted*****");
                    Console.WriteLine("");
                         son++;
                 }
                 if (result != phoneNumber.Length && succes != true)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("Phone number not accepted!" + " " + "Please try again");
-                    Console.WriteLine("phone number must consist of numbers");
+                    Console.WriteLine("*****Phone number not accepted!" + " " + "Please try again*****");
+                    Console.WriteLine("*****Phone number must consist of numbers*****");
                     Console.WriteLine("");
                 }
             }
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("Phone number not accepted!" + " " + "Please try again");
-                Console.WriteLine("Phone number must contain 13 digits");
+                Console.WriteLine("*****Phone number not accepted!" + " " + "Please try again*****");
+                Console.WriteLine("*****Phone number must contain 13 digits*****");
                 Console.WriteLine("");
             }
            }
@@ -450,15 +453,15 @@ namespace ConsoleApp1
             if(b == true)
             {
                 Console.WriteLine("");
-                Console.WriteLine("Worker profession accepted");
+                Console.WriteLine("*****Worker profession accepted*****");
                 Console.WriteLine("");
                     son++;
             }
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("Worker profession not accepted!" + " " + "Please try again");
-                Console.WriteLine("Please enter one of the jobs in the list");
+                Console.WriteLine("*****Worker profession not accepted!" + " " + "Please try again*****");
+                Console.WriteLine("*****Please enter one of the profession in the list*****");
                 Console.WriteLine("");
             }
            }
@@ -476,23 +479,23 @@ namespace ConsoleApp1
                 if(convertSalary >= 1500 && convertSalary <= 5000)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("Salary accepted");
+                    Console.WriteLine("*****Salary accepted*****");
                     Console.WriteLine("");
                         son++;
                 }
                 else
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("Salary not accepted!" + " " + "Please try again");
-                    Console.WriteLine("The amount you enter should be between 1500 and 5000");
+                    Console.WriteLine("*****Salary not accepted!" + " " + "Please try again*****");
+                    Console.WriteLine("*****The amount you enter should be between 1500 and 5000*****");
                     Console.WriteLine("");
                 }
             }
             catch(Exception)
             {
                 Console.WriteLine("");
-                Console.WriteLine("Salary not accepted!" + " " + "Please try again");
-                Console.WriteLine("Use numbers only");
+                Console.WriteLine("*****Salary not accepted!" + " " + "Please try again*****");
+                Console.WriteLine("*****Use numbers only*****");
                 Console.WriteLine("");
             }
             }
