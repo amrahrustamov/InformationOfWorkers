@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Numerics;
 using System.Xml.Linq;
 
 namespace ConsoleApp1
@@ -16,131 +17,112 @@ namespace ConsoleApp1
             bool resultUpperCaseLetters = false;
             bool resultLowerLetters = false;
             bool resultNumbers = false;
-            string name;
-            string surname;
-            string fatherName;
-            string age;
-            string finCode;
-            string phoneNumber;            
-            string jobPosition;
-            string salary;          
 
             Console.Write("Count of employees : ");
             int count = int.Parse(Console.ReadLine());
 
             for(int i = 0; i < count; i++)
-            {
-                Console.Write("Add worker's name: ");
-                name = Console.ReadLine();
-                Name(upperCaseLetters, lowerLetters, numbers, resultUpperCaseLetters, resultLowerLetters, resultNumbers, name);
-
-                Console.Write("Add worker's surname: ");
-                surname = Console.ReadLine();
-                Surname(upperCaseLetters, lowerLetters, numbers, resultUpperCaseLetters, resultLowerLetters, resultNumbers, surname);
-
-                Console.Write("Add worker's father's name: ");
-                fatherName = Console.ReadLine();
-                FatherName(upperCaseLetters, lowerLetters, numbers, resultUpperCaseLetters, resultLowerLetters, resultNumbers, fatherName);
-
-                Console.Write("Add worker's age: ");
-                age = Console.ReadLine();
-                Age(numbers, age);
-
-                Console.Write("Add worker's FIN code: ");
-                finCode = Console.ReadLine();
-                FinCode(upperCaseLetters, lowerLetters, numbers, finCode);
-
-                Console.Write("Add worker's phone number: ");
-                phoneNumber = Console.ReadLine();
-                PhoneNumber(upperCaseLetters, lowerLetters, numbers, phoneNumber);
-
-                Console.WriteLine(" HR");
-                Console.WriteLine(" Audit");
-                Console.WriteLine(" Engineer");
-                Console.Write("Add worker's job position: ");
-                jobPosition = Console.ReadLine();
-                JobPosition(upperCaseLetters, lowerLetters, jobs, arrayLength, jobPosition);
-                
-                Console.Write("Add worker's salary: ");
-                salary = Console.ReadLine();
-                Salary(numbers, salary);
+            {                 
+                Name(upperCaseLetters, lowerLetters, numbers, resultUpperCaseLetters, resultLowerLetters, resultNumbers);                              
+                Surname(upperCaseLetters, lowerLetters, numbers, resultUpperCaseLetters, resultLowerLetters, resultNumbers);
+                FatherName(upperCaseLetters, lowerLetters, numbers, resultUpperCaseLetters, resultLowerLetters, resultNumbers);
+                Age(numbers);
+                FinCode(upperCaseLetters, lowerLetters, numbers);
+                PhoneNumber(upperCaseLetters, lowerLetters, numbers);
+                JobPosition(upperCaseLetters, lowerLetters, jobs, arrayLength);             
+                Salary(numbers);
             }
+            Console.ReadLine();
         }
-        public static void Name       (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers, string name)
+        public static void Name       (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers)
         {
-            int sum = 1;
-           if (name.Length < 20 && name.Length > 2)
-           {
-                for (int j = 0; j < name.Length; j++)
-                {
-                    for (int k = 0; k < name.Length; k++)
-                    {
-                        for (int g = 0; g < numbers.Length; g++)
-                        {
-                            if (name[k] == numbers[g])
-                            {
-                                resultNumbers = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (resultNumbers == true)
-                    {
-                        Console.WriteLine("");
-                        Console.WriteLine("Name not accepted!");
-                        Console.WriteLine("The name must contain only letters");
-                        Console.ReadLine();
-                        break;
-                    }
-                    if (j == 0)
-                    {
-                        for (int a = 0; a < upperCaseLetters.Length; a++)
-                        {
-                            if (name[j] == upperCaseLetters[a])
-                            {
-                                resultUpperCaseLetters = true;
-                                j++;
-                                break;
-                            }
-                        }
-                    }
-                    if (j < name.Length)
-                    {
-                        for (int a = 0; a < lowerLetters.Length; a++)
-                        {
-                            if (name[j] == lowerLetters[a])
-                            {
-                                sum = sum + 1;
-                                if (sum == name.Length)
-                                    resultLowerLetters = true;
-                            }
-                        }
-                    }
+            int son = 0;
+            while (son == 0)
+            {
+                       Console.Write("Add worker's name: ");
+                       string name = Console.ReadLine();
+                   
+                   int sum = 1;
+                  if (name.Length < 20 && name.Length > 2)
+                  {
+                       for (int j = 0; j < name.Length; j++)
+                       {
+                           for (int k = 0; k < name.Length; k++)
+                           {
+                               for (int g = 0; g < numbers.Length; g++)
+                               {
+                                   if (name[k] == numbers[g])
+                                   {
+                                       resultNumbers = true;
+                                       break;
+                                   }
+                               }
+                           }
+                           if (resultNumbers == true)
+                           {
+                               Console.WriteLine("");
+                               Console.WriteLine("Name not accepted!" + " " + "Please try again");
+                               Console.WriteLine("The name must contain only letters");
+                               Console.WriteLine("");
+                            break;
+                           }
+                           if (j == 0)
+                           {
+                               for (int a = 0; a < upperCaseLetters.Length; a++)
+                               {
+                                   if (name[j] == upperCaseLetters[a])
+                                   {
+                                       resultUpperCaseLetters = true;
+                                       j++;
+                                       break;
+                                   }
+                               }
+                           }
+                           if (j < name.Length)
+                           {
+                               for (int a = 0; a < lowerLetters.Length; a++)
+                               {
+                                   if (name[j] == lowerLetters[a])
+                                   {
+                                       sum = sum + 1;
+                                       if (sum == name.Length)
+                                           resultLowerLetters = true;
+                                   }
+                               }
+                           }
+                       }
+                       if (resultLowerLetters == true && resultUpperCaseLetters == true)
+                       {
+                           Console.WriteLine("");
+                           Console.WriteLine("Name added successfully");
+                           Console.WriteLine("");
+                        son++;
+                       }
+                       else
+                       {
+                           Console.WriteLine("");
+                           Console.WriteLine("Name not accepted!" + " " + "Please try again");
+                           Console.WriteLine("The first letter should be uppercase and the following letters should be lowercase");
+                           Console.WriteLine();
+                       }
+                  }
+                  else
+                  {
+                      Console.WriteLine("");
+                      Console.WriteLine("Name not accepted!" + " " + "Please try again");
+                      Console.WriteLine("Letters must be longer than 2 and less than 20");
+                      Console.WriteLine("");
                 }
-                if (resultLowerLetters == true && resultUpperCaseLetters == true)
-                {
-                    Console.WriteLine("");
-                    Console.WriteLine("Name added successfully");
-                    Console.WriteLine("");
-                }
-                else
-                {
-                    Console.WriteLine("");
-                    Console.WriteLine("The name is not entered correctly!");
-                    Console.WriteLine("The first letter should be uppercase and the following letters should be lowercase");
-                    Console.ReadLine();
-                }
-           }
-           else
-           {
-               Console.WriteLine("");
-               Console.WriteLine("The name is not entered correctly!");
-               Console.WriteLine("Letters must be greater than 2 and less than 20");
-               Console.ReadLine();
-           }
+            }
+                   
         }
-        public static void Surname    (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers, string surname)
+        public static void Surname    (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers)
         {
+           int son = 0;
+           while (son == 0)
+           {
+                Console.Write("Add worker's surname: ");
+                string surname = Console.ReadLine();
             int sum = 1;
             if (surname.Length < 35 && surname.Length > 2)
             {
@@ -160,9 +142,9 @@ namespace ConsoleApp1
                     if (resultNumbers == true)
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("Surname not accepted!");
+                        Console.WriteLine("Surname not accepted!" + " " + "Please try again");
                         Console.WriteLine("The Surname must contain only letters");
-                        Console.ReadLine();
+                        Console.WriteLine("");
                         break;
                     }
                     if (j == 0)
@@ -195,25 +177,32 @@ namespace ConsoleApp1
                     Console.WriteLine("");
                     Console.WriteLine("Surname added successfully");
                     Console.WriteLine("");
+                        son++;
                 }
                 else
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("The surname is not entered correctly!");
+                    Console.WriteLine("Surname not accepted!" + " " + "Please try again");
                     Console.WriteLine("The first letter should be uppercase and the following letters should be lowercase");
-                    Console.ReadLine();
+                    Console.WriteLine("");
                 }
             }
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("The surname is not entered correctly!");
-                Console.WriteLine("Letters must be greater than 2 and less than 35");
-                Console.ReadLine();
+                Console.WriteLine("Surname not accepted!" + " " + "Please try again");
+                Console.WriteLine("Letters must be longer than 2 and less than 35");
+                Console.WriteLine("");
             }
+           }
         }
-        public static void FatherName (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers, string fatherName)
+        public static void FatherName (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, bool resultUpperCaseLetters, bool resultLowerLetters, bool resultNumbers)
         {
+           int son = 0;
+           while (son == 0)
+           {
+                Console.Write("Add worker's father's name: ");
+             string fatherName = Console.ReadLine();
             int sum = 1;
             if (fatherName.Length < 20 && fatherName.Length > 2)
             {
@@ -233,9 +222,9 @@ namespace ConsoleApp1
                     if (resultNumbers == true)
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("Name not accepted!");
+                        Console.WriteLine("Father name not accepted!" + " " + "Please try again");
                         Console.WriteLine("The name must contain only letters");
-                        Console.ReadLine();
+                        Console.WriteLine("");
                         break;
                     }
                     if (j == 0)
@@ -268,25 +257,32 @@ namespace ConsoleApp1
                     Console.WriteLine("");
                     Console.WriteLine("Name added successfully");
                     Console.WriteLine("");
+                        son++;
                 }
                 else
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("The name is not entered correctly!");
+                    Console.WriteLine("Father name not accepted!" + " " + "Please try again");
                     Console.WriteLine("The first letter should be uppercase and the following letters should be lowercase");
-                    Console.ReadLine();
+                    Console.WriteLine("");
                 }
             }
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("The name is not entered correctly!");
-                Console.WriteLine("Letters must be greater than 2 and less than 20");
-                Console.ReadLine();
+                Console.WriteLine("Father name not accepted!" + " " + "Please try again");
+                Console.WriteLine("Letters must be longer than 2 and less than 20");
+                Console.WriteLine("");
             }
+           }
         }
-        public static void Age        (char[] numbers, string age)
-        {            
+        public static void Age        (char[] numbers)
+        {
+           int son = 0;
+           while (son == 0)
+           {
+                Console.Write("Add worker's age: ");
+               string age = Console.ReadLine();
             try
             {
                  int convertAge = Convert.ToInt32(age);
@@ -294,12 +290,13 @@ namespace ConsoleApp1
                  {    
                      Console.WriteLine("");
                      Console.WriteLine("Age added successfully");
-                     Console.WriteLine("");                     
+                     Console.WriteLine("");
+                        son++;
                  }
                  else
                  {
                      Console.WriteLine("");
-                     Console.WriteLine("Age not accepted!");
+                     Console.WriteLine("Age not accepted!" + " " + "Please try again");
                      Console.WriteLine("Age should be between 18-65 years");
                      Console.WriteLine("");
                  }
@@ -307,13 +304,19 @@ namespace ConsoleApp1
             catch (Exception)
             {
                 Console.WriteLine("");
-                Console.WriteLine("Age not accepted!");
+                Console.WriteLine("Age not accepted!" + " " + "Please try again");
                 Console.WriteLine("Age must contain only numbers");
                 Console.WriteLine("");
             }
+           }
         }
-        public static void FinCode    (char[] upperCaseLetters, char[] lowerLetters, char[] numbers, string finCode)
+        public static void FinCode    (char[] upperCaseLetters, char[] lowerLetters, char[] numbers)
         {
+           int son = 0;
+           while (son == 0)
+           {
+                Console.Write("Add worker's FIN code: ");
+                string finCode = Console.ReadLine();
             int upperCase = 0;
             int countNumbers = 0;
             int result = 0;
@@ -341,13 +344,14 @@ namespace ConsoleApp1
                 if(result == finCode.Length)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("*****FIN code accepted*****");
+                    Console.WriteLine("FIN code accepted");
                     Console.WriteLine("");
+                        son++;
                 }
                 else
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("*****FIN code not accepted!*****");
+                    Console.WriteLine("FIN code not accepted!" + " " + "Please try again");
                     Console.WriteLine("*****FIN code must contain uppercase letters and numbers*****");
                     Console.WriteLine("");
                 }
@@ -355,13 +359,19 @@ namespace ConsoleApp1
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("*****FIN code not accepted*****!");
-                Console.WriteLine("*****FIN code must be 7 numbers*****");
+                Console.WriteLine("FIN code not accepted!" + " " + "Please try again");
+                Console.WriteLine("FIN code must be 7 numbers");
                 Console.WriteLine("");
             }
+           }
         }
-        public static void PhoneNumber(char[] upperCaseLetters, char[] lowerLetters, char[] numbers, string phoneNumber)
+        public static void PhoneNumber(char[] upperCaseLetters, char[] lowerLetters, char[] numbers)
         {
+           int son = 0;
+           while (son == 0)
+           {
+                Console.Write("Add worker's phone number: ");
+                string phoneNumber = Console.ReadLine();
             string startChar = "+994";
             int i = 0;
             bool succes= false;
@@ -374,7 +384,7 @@ namespace ConsoleApp1
                     if (phoneNumber[i] != startChar[i] && i < startChar.Length)
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("Phone number not accepted!");
+                        Console.WriteLine("Phone number not accepted!" + " " + "Please try again");
                         Console.WriteLine("Phone number must start with +994");
                         Console.WriteLine("");
                         succes = true;
@@ -398,12 +408,13 @@ namespace ConsoleApp1
                 {
                    Console.WriteLine("");
                    Console.WriteLine("Phone number accepted");
-                   Console.WriteLine("");   
+                   Console.WriteLine("");
+                        son++;
                 }
                 if (result != phoneNumber.Length && succes != true)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("Phone number not accepted!");
+                    Console.WriteLine("Phone number not accepted!" + " " + "Please try again");
                     Console.WriteLine("phone number must consist of numbers");
                     Console.WriteLine("");
                 }
@@ -411,13 +422,22 @@ namespace ConsoleApp1
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("Phone number not accepted!");
+                Console.WriteLine("Phone number not accepted!" + " " + "Please try again");
                 Console.WriteLine("Phone number must contain 13 digits");
                 Console.WriteLine("");
             }
+           }
         }
-        public static void JobPosition(char[] upperCaseLetters, char[] lowerLetters, string[] jobs, int arrayLength, string jobPosition)
+        public static void JobPosition(char[] upperCaseLetters, char[] lowerLetters, string[] jobs, int arrayLength)
         {
+           int son = 0;
+           while (son == 0)
+           {
+                Console.WriteLine(" HR");
+                Console.WriteLine(" Audit");
+                Console.WriteLine(" Engineer");
+                Console.Write("Add worker's job position: ");
+                string jobPosition = Console.ReadLine();
             bool b = false;
             for (int i = 0; i < arrayLength; i++)
             {
@@ -430,32 +450,40 @@ namespace ConsoleApp1
             if(b == true)
             {
                 Console.WriteLine("");
-                Console.WriteLine("Added to the system");
+                Console.WriteLine("Worker profession accepted");
                 Console.WriteLine("");
+                    son++;
             }
             else
             {
                 Console.WriteLine("");
-                Console.WriteLine("Job not accepted!");
+                Console.WriteLine("Worker profession not accepted!" + " " + "Please try again");
                 Console.WriteLine("Please enter one of the jobs in the list");
                 Console.WriteLine("");
             }
+           }
         }
-        public static void Salary(char[] numbers, string salary)
+        public static void Salary(char[] numbers)
         {
+           int son = 0;
+            while (son == 0)
+            {
+                Console.Write("Add worker's salary: ");
+                string salary = Console.ReadLine();
             try
             {
                 int convertSalary = Convert.ToInt32(salary);
                 if(convertSalary >= 1500 && convertSalary <= 5000)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("Salary added successfully");
+                    Console.WriteLine("Salary accepted");
                     Console.WriteLine("");
+                        son++;
                 }
                 else
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("It was not accepted!");
+                    Console.WriteLine("Salary not accepted!" + " " + "Please try again");
                     Console.WriteLine("The amount you enter should be between 1500 and 5000");
                     Console.WriteLine("");
                 }
@@ -463,9 +491,10 @@ namespace ConsoleApp1
             catch(Exception)
             {
                 Console.WriteLine("");
-                Console.WriteLine("It was not accepted!");
+                Console.WriteLine("Salary not accepted!" + " " + "Please try again");
                 Console.WriteLine("Use numbers only");
                 Console.WriteLine("");
+            }
             }
         }
     }
