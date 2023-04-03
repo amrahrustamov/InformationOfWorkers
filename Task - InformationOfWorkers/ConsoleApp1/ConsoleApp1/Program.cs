@@ -103,7 +103,7 @@ namespace ConsoleApp1
                         Console.WriteLine("");
                         son++;
                     }
-                    if (resultLowerLetters == true && resultUpperCaseLetters == true && resultNumbers != true  && son <= 0)
+                    if (resultLowerLetters == true && resultUpperCaseLetters != true)
                     {
                         Console.WriteLine("");
                         Console.WriteLine("*****Name not accepted!" + " " + "Please try again*****");
@@ -185,7 +185,7 @@ namespace ConsoleApp1
                         Console.WriteLine("");
                         son++;
                     }
-                    if (resultLowerLetters == true && resultUpperCaseLetters == true && resultNumbers != true && son <= 0)
+                    if (resultLowerLetters == true && resultUpperCaseLetters != true)
                     {
                         Console.WriteLine("");
                         Console.WriteLine("*****Surname not accepted!" + " " + "Please try again*****");
